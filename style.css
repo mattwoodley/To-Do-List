@@ -2,3 +2,29 @@ body {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
 }
+
+.container {
+    border: 1px solid black;
+    margin: 5px auto;
+    width: 300px;
+}
+
+.header {
+    border: 1px dashed red;
+    margin: 5px auto;
+}
+
+.content {
+    border: 1px solid grey;
+    margin: 5px auto;
+}
+
+.list {
+    border: 1px dashed blue;
+    margin: 5px auto;
+}
+
+.add-item {
+    border: 1px dashed green;
+    margin: 5px auto;
+}
