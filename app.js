@@ -25,4 +25,16 @@ addToDo = (toDo) => {
     list.insertAdjacentHTML("beforeend", newItem)
 }
 
-addToDo("Get a job");
+document.addEventListener("keyup", (evt) => {
+    if(evt.keyCode === 13) {
+        const toDo = input.value;
+        
+        // check if toDo is empty
+        if(toDo.length !== 0) {
+            addToDo(toDo);
+        } else {
+            throw "Error: To Do contains zero characters."
+        }
+        input.value = "";
+    }
+});
