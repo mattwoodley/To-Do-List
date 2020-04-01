@@ -13,18 +13,33 @@ const dateOptions = { weekday: "long", month: "short", day:"numeric"};
 
 date.innerHTML = today.toLocaleDateString("en-GB", dateOptions);
 
-addToDo = (toDo) => {
+addToDo = (id, toDo, completed, deleted) => {
+
+    // check if deleted === true, if so then don't run code below.
+    if (deleted) { return; }
+
+    //  check completed state to decide what css styles to apply
+    let check = ""
+    let line = ""
+    if (completed) {
+        check = "fa-check-circle"
+        line = "lineThrough"
+    } else {
+        check = "fa-circle"
+    }
+
     newItem = `
         <li class="item">
-            <i class="far fa-circle" job="complete" id="0"></i>
-            <p class="text">${toDo}</p>
-            <i class="fa fa-trash" job="delete" id="0"></i>
+            <i class="far ${check}" job="complete" id="${id}"></i>
+            <p class="text ${line}">${toDo}</p>
+            <i class="fa fa-trash" job="delete" id="${id}"></i>
         </li>
     `
 
     list.insertAdjacentHTML("beforeend", newItem)
 }
 
+// enter keyup to submit new toDo onto list
 document.addEventListener("keyup", (evt) => {
     if(evt.keyCode === 13) {
         const toDo = input.value;
