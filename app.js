@@ -2,9 +2,13 @@
 
 const clear = document.querySelector(".clear");
 const date = document.querySelector("#date");
-const list = document.querySelector("#list");
+const listContainer = document.querySelector("#list-container");
 const input = document.querySelector("#input");
 
+// Create list array and id
+
+const list = [];
+let id = 0;
 
 // Show Today's Date
 
@@ -36,7 +40,7 @@ addToDo = (id, toDo, completed, deleted) => {
         </li>
     `
 
-    list.insertAdjacentHTML("beforeend", newItem)
+    listContainer.insertAdjacentHTML("beforeend", newItem)
 }
 
 // enter keyup to submit new toDo onto list
@@ -46,7 +50,17 @@ document.addEventListener("keyup", (evt) => {
         
         // check if toDo is empty
         if(toDo.length !== 0) {
-            addToDo(toDo);
+            addToDo(id, toDo, false, false);
+
+            list.push({
+                name: toDo,
+                id: id,
+                completed: false,
+                deleted: false
+            });
+
+            id++;
+
         } else {
             throw "Error: To Do contains zero characters."
         }
