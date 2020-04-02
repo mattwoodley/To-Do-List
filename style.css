@@ -72,7 +72,7 @@ body {
     margin:0;
 }
 
-.toDo{
+.to-do{
     width:380px;
     height: 45px;
     min-height: 45px;
@@ -82,20 +82,20 @@ body {
     padding: 0;
     margin: 0;
 }
-.toDo i.co{
+.to-do i.co{
     position: absolute;
     font-size: 25px;
     padding-left:5px;
     left:15px;
     top:10px;
 }
-.toDo i.co:hover{
+.to-do i.co:hover{
     cursor: pointer;
 }
 .fa-check-circle{
     color:#6eb200;
 }
-.toDo p.text{
+.to-do p.text{
     position: absolute;
     padding:0;
     margin:0;
@@ -105,22 +105,22 @@ body {
     background-color: #FFF;
     max-width:285px;
 }
-.lineThrough{
+.line-through{
     text-decoration: line-through;
     color : #ccc;
 }
-.toDo i.de{
+.to-do i.de{
     position: absolute;
     font-size: 25px;
     right:15px;
     top:10px;
 }
-.toDo i.de:hover{
+.to-do i.de:hover{
     color:#af0000;
     cursor: pointer;
 }
 
-/* ------------ add toDo ------------ */
+/* ------------ add to-do ------------ */
 
 .add-to-do{
     position: relative;

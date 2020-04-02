@@ -25,12 +25,12 @@ addToDo = (id, toDo, completed, deleted) => {
     let [completedCheck, lineThrough] = ["", ""];
     if (completed) {
         completedCheck = "fa-check-circle"
-        lineThrough = "lineThrough"
+        lineThrough = "line-through"
     } else {
         completedCheck = "fa-circle"
     }
     newToDo = `
-        <li class="toDo">
+        <li class="to-do">
             <i class="far ${completedCheck}" job="complete" id="${id}"></i>
             <p class="text ${lineThrough}">${toDo}</p>
             <i class="fa fa-trash" job="delete" id="${id}"></i>
@@ -61,6 +61,15 @@ document.addEventListener("keyup", (evt) => {
     }
 });
 
+// complete to do
+
+completeToDo = (toDo) => {
+    toDo.classList.toggle("fa-check-circle");
+    toDo.classList.toggle("fa-circle");
+    toDo.parentNode.querySelector(".text").classList.toggle("line-through");
+    list[toDo.id].completed = listContainer[toDo.id].completed ?  false : true;
+}
+
 // delete to do
 
 deleteToDo = (toDo) => {
@@ -85,3 +94,5 @@ listContainer.addEventListener("click", (evt) => {
 
 addToDo(0, "Hello World", false, false);
 addToDo(1, "True", false, false);
+
+console.log(list);
