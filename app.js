@@ -4,11 +4,11 @@ const clear = document.querySelector(".clear");
 const date = document.querySelector("#date");
 const listContainer = document.querySelector("#list-container");
 const input = document.querySelector("#input");
+const addToDoButton = document.querySelector(".add-to-do-button");
 
 // Create list array and id
 
-const list = [];
-let id = 0;
+let list, id;
 
 // Show Today's Date
 
@@ -39,6 +39,53 @@ addToDo = (id, toDo, completed, deleted) => {
     listContainer.insertAdjacentHTML("beforeend", newToDo)
 }
 
+// complete to do
+
+completeToDo = (toDo) => {
+    toDo.classList.toggle("fa-check-circle");
+    toDo.classList.toggle("fa-circle");
+    toDo.parentNode.querySelector(".text").classList.toggle("line-through");    
+    list[toDo.id].completed = listContainer[toDo.id].completed ?  false : true;
+}
+
+// delete to do
+
+deleteToDo = (toDo) => {
+    toDo.parentNode.parentNode.removeChild(toDo.parentNode);
+    list[toDo.id].deleted = true;
+}
+
+// load items to the user's interface
+
+loadList = (array) => {
+    array.forEach((item) => {
+        addToDo(item.id, item.toDoName, item.completed, item.deleted);
+    });
+}
+
+// Get item from localStorage
+
+let data = localStorage.getItem("toDo");
+
+// check if data is not empty
+
+if(data) {
+    list = JSON.parse(data);
+    id = list.length; // set the id to the last one in the list
+    loadList(list); // load the list to the user interface
+} else {
+    // if data is empty
+    list = [];
+    id = 0;
+}
+
+// clear the local storage
+
+clear.addEventListener("click", () => {
+    localStorage.clear();
+    location.reload();
+});
+
 // enter keyup to submit new toDo onto list
 document.addEventListener("keyup", (evt) => {
     if(evt.keyCode === 13) {
@@ -53,6 +100,10 @@ document.addEventListener("keyup", (evt) => {
                 completed: false,
                 deleted: false
             });
+
+            // add item to localStorage (this code must be added where the list array is updated)
+            localStorage.setItem("toDo", JSON.stringify(list));
+
             id++;
         } else {
             throw "Error: To Do cannot contain zero characters."
@@ -61,21 +112,29 @@ document.addEventListener("keyup", (evt) => {
     }
 });
 
-// complete to do
+// click + to submit new toDo onto list
+addToDoButton.addEventListener("click", () => {
+    const toDo = input.value;
+    
+    // check if toDo is empty
+    if(toDo.length !== 0) {
+        addToDo(id, toDo, false, false);
+        list.push({
+            toDoName: toDo,
+            id: id,
+            completed: false,
+            deleted: false
+        });
 
-completeToDo = (toDo) => {
-    toDo.classList.toggle("fa-check-circle");
-    toDo.classList.toggle("fa-circle");
-    toDo.parentNode.querySelector(".text").classList.toggle("line-through");
-    list[toDo.id].completed = listContainer[toDo.id].completed ?  false : true;
-}
+        // add item to localStorage (this code must be added where the list array is updated)
+        localStorage.setItem("toDo", JSON.stringify(list));
 
-// delete to do
-
-deleteToDo = (toDo) => {
-    toDo.parentNode.parentNode.removeChild(toDo.parentNode);
-    list[toDo.id].deleted = true;
-}
+        id++;
+    } else {
+        throw "Error: To Do cannot contain zero characters."
+    }
+    input.value = "";
+});
 
 listContainer.addEventListener("click", (evt) => {
     let toDoContainer = evt.target;
@@ -90,9 +149,7 @@ listContainer.addEventListener("click", (evt) => {
             return;
         }
     }
+    // add item to localStorage (this code must be added where the list array is updated)
+    localStorage.setItem("toDo", JSON.stringify(list));
 });
 
-addToDo(0, "Hello World", false, false);
-addToDo(1, "True", false, false);
-
-console.log(list);
