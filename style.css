@@ -122,12 +122,12 @@ body {
     color : #ccc;
 }
 
-.fa-trash-alt {
+.fa-times-circle {
     font-size: 2.5em;
 }
 
-.fa-trash-alt:hover{
-    color:#af0000;
+.fa-times-circle:hover {
+    color:#e10000;
     cursor: pointer;
 }
 
