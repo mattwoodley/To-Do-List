@@ -16,21 +16,30 @@ body {
 /* ------------ header ------------ */
 
 .header {
-    width: 380px;
-    height:200px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: 1fr 3fr;
     background-image: url('./Lake\ Pukaki\,\ New\ Zealand.jpg');
     background-size: 100% 200%;
     background-repeat: no-repeat;
     border-radius: 15px 15px 0 0;
-    position: relative;
+    width: 348px;
+    height: 168px;
+    padding: 1em;
+}
+
+.date {
+    grid-column: 1/3;
+    justify-self: left;
+    font-family: 'Montserrat', sans-serif;
+    color: #FFF;
+    font-size: 20px;
+    text-shadow: black 1px 1px;
 }
 
 .clear {
-    width : 30px;
-    height: 30px;
-    top: 20px;
-    right:20px;
-    position: absolute;
+    grid-column: 3/4;
+    justify-self: right;
 }
 
 .clear i{
@@ -44,18 +53,11 @@ body {
     transform: rotate(60deg);
 }
 
-#date{
-    font-family: 'Montserrat', sans-serif;
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    color: #FFF;
-    font-size: 20px;
-}
-
 /* ------------ content ------------ */
 
 .content {
+    display: grid;
+    grid-template-rows: 5fr 1fr;
     width:380px;
     height: 350px;
     max-height:350px;
@@ -72,31 +74,40 @@ body {
     margin:0;
 }
 
+.list-container li {
+    display: grid;
+    grid-auto-rows: minmax(45px, auto);
+    grid-template-columns: 1fr 7fr 1fr;
+    place-items: center;
+}
+
 .to-do{
     width:380px;
     height: 45px;
     min-height: 45px;
-    position: relative;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     list-style: none;
     padding: 0;
     margin: 0;
 }
+
 .to-do i.co{
-    position: absolute;
     font-size: 25px;
     padding-left:5px;
     left:15px;
     top:10px;
 }
+
 .to-do i.co:hover{
     cursor: pointer;
 }
+
 .fa-check-circle{
     color:#6eb200;
 }
+
 .to-do p.text{
-    position: absolute;
+    justify-self: start;
     padding:0;
     margin:0;
     font-size: 20px;
@@ -105,16 +116,18 @@ body {
     background-color: #FFF;
     max-width:285px;
 }
+
 .line-through{
     text-decoration: line-through;
     color : #ccc;
 }
+
 .to-do i.de{
-    position: absolute;
     font-size: 25px;
     right:15px;
     top:10px;
 }
+
 .to-do i.de:hover{
     color:#af0000;
     cursor: pointer;
@@ -123,45 +136,53 @@ body {
 /* ------------ add to-do ------------ */
 
 .add-to-do{
-    position: relative;
-    width: 360px;
-    height:40px;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
     background-color: #FFF;
-    padding: 10px;
+    padding: 5px 15px;
     border-top: 1px solid rgba(0,0,0,0.1);
 }
-.add-to-do i{
-    position: absolute;
+
+.add-to-do-button {
+    justify-self: end;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+}
+
+.add-to-do i {
     left: 330px;
     font-size: 40px;
     color: #4162f6;
 }
 
-.add-to-do input{
-    position: absolute;
-    left: 5px;
-    height: 35px;
-    width: 310px;
+.add-to-do input {
     background-color: transparent;
     border: none;
     font-size: 20px;
-    padding-left:10px;
 }
+
 .add-to-do input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #4162f6;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
 }
+
 .add-to-do input::-moz-placeholder { /* Firefox 19+ */
     color: #4162f6;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
 }
+
 .add-to-do input:-ms-input-placeholder { /* IE 10+ */
     color: #4162f6;
     font-family: 'Montserrat', sans-serif;
     font-size: 20px;
 }
+
 .add-to-do input:-moz-placeholder { /* Firefox 18- */
     color: #4162f6;
     font-family: 'Montserrat', sans-serif;

@@ -1,8 +1,8 @@
 // Select all elements
 
 const clear = document.querySelector(".clear");
-const date = document.querySelector("#date");
-const listContainer = document.querySelector("#list-container");
+const date = document.querySelector(".date");
+const listContainer = document.querySelector(".list-container");
 const input = document.querySelector("#input");
 const addToDoButton = document.querySelector(".add-to-do-button");
 
