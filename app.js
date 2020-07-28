@@ -33,7 +33,7 @@ addToDo = (id, toDo, completed, deleted) => {
         <li class="to-do">
             <i class="far ${completedCheck}" job="complete" id="${id}"></i>
             <p class="text ${lineThrough}">${toDo}</p>
-            <i class="fa fa-trash" job="delete" id="${id}"></i>
+            <i class="far fa-trash-alt" job="delete" id="${id}"></i>
         </li>
     `
     listContainer.insertAdjacentHTML("beforeend", newToDo)
