@@ -17,7 +17,7 @@ const dateOptions = { weekday: "long", month: "short", day:"numeric"};
 
 date.innerHTML = today.toLocaleDateString("en-GB", dateOptions);
 
-addToDo = (id, toDo, completed, deleted) => {
+const addToDo = (id, toDo, completed, deleted) => {
     // check if deleted === true, if so then don't run code below.
     if (deleted) { return; }
 
@@ -41,7 +41,7 @@ addToDo = (id, toDo, completed, deleted) => {
 
 // complete to do
 
-completeToDo = (toDo) => {
+const completeToDo = (toDo) => {
     toDo.classList.toggle("fa-check-circle");
     toDo.classList.toggle("fa-circle");
     toDo.parentNode.querySelector(".text").classList.toggle("line-through");    
@@ -50,14 +50,14 @@ completeToDo = (toDo) => {
 
 // delete to do
 
-deleteToDo = (toDo) => {
+const deleteToDo = (toDo) => {
     toDo.parentNode.parentNode.removeChild(toDo.parentNode);
     list[toDo.id].deleted = true;
 }
 
 // load items to the user's interface
 
-loadList = (array) => {
+const loadList = (array) => {
     array.forEach((item) => {
         addToDo(item.id, item.toDoName, item.completed, item.deleted);
     });
