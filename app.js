@@ -88,7 +88,7 @@ clear.addEventListener("click", () => {
 
 // enter keyup to submit new toDo onto list
 document.addEventListener("keyup", (evt) => {
-    if(evt.keyCode === 13) {
+    if(evt.key === 'Enter') {
         const toDo = input.value;
         
         // check if toDo is empty
